@@ -1,7 +1,10 @@
 package com.example.seventhweekapppt3.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.seventhweekapppt3.R
@@ -10,18 +13,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
-class FavouriteCatsActivity : AppCompatActivity() {
+class FavouriteCatsFragment : Fragment(R.layout.fragment_favourite_cats) {
 
     private val scope = CoroutineScope(Dispatchers.Main)
-    private val repository by lazy { (applicationContext as App).repository }
+    private val repository by lazy { (requireContext().applicationContext as App).repository }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_favourite_cats)
-        getSupportActionBar()?.hide()
-        val recycler = findViewById<RecyclerView>(R.id.recycler_favourite)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val recycler = view.findViewById<RecyclerView>(R.id.recycler_favourite)
         val adapter = FavouriteCatsAdapter()
-        val layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recycler.layoutManager = layoutManager
         recycler.adapter = adapter
         scope.launch {

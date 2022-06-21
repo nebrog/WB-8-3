@@ -9,7 +9,7 @@ import com.example.seventhweekapppt3.data.room.model.CatsFavEntity
 interface CatsFavDao {
 
     @Insert
-    suspend fun insertFavCat(cat: CatsFavEntity)
+    fun insertFavCat(cat: CatsFavEntity)
 
     @Query("SELECT * FROM CatsFavEntity")
     fun getAllCats(): List<CatsFavEntity>
