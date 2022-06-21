@@ -17,8 +17,9 @@ import io.ktor.http.parsing.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.IOException
+import javax.inject.Inject
 
-class NetworkRepository(
+class NetworkRepository @Inject constructor(
     private val client: HttpClient,
 
     ) : Repository {

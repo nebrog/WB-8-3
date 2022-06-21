@@ -13,18 +13,22 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.seventhweekapppt3.R
 import com.example.seventhweekapppt3.ui.models.CatItem
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class CatsFragment : Fragment(R.layout.fragment_cats) {
 
     private val scope = CoroutineScope(Dispatchers.Main)
     private var cat: ImageView? = null
     private var item: CatItem? = null
-    private val repository by lazy { (requireContext().applicationContext as App).repository }
+
+    @Inject
+    lateinit var repository: Repository
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

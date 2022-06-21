@@ -8,15 +8,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.seventhweekapppt3.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavouriteCatsFragment : Fragment(R.layout.fragment_favourite_cats) {
 
     private val scope = CoroutineScope(Dispatchers.Main)
-    private val repository by lazy { (requireContext().applicationContext as App).repository }
+    @Inject
+    lateinit var repository: Repository
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

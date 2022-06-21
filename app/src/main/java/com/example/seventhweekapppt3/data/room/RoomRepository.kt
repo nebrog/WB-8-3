@@ -10,8 +10,9 @@ import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.sql.SQLException
 import java.util.*
+import javax.inject.Inject
 
-class RoomRepository(
+class RoomRepository @Inject constructor(
     private val db: CatsFavDatabase,
 
     ) : Repository {

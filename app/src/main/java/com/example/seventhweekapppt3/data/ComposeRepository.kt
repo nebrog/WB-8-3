@@ -4,8 +4,9 @@ import com.example.seventhweekapppt3.data.network.NetworkRepository
 import com.example.seventhweekapppt3.data.room.RoomRepository
 import com.example.seventhweekapppt3.ui.Repository
 import com.example.seventhweekapppt3.ui.models.CatItem
+import javax.inject.Inject
 
-class ComposeRepository(
+class ComposeRepository @Inject constructor(
     private val roomRepository: RoomRepository,
     private val networkRepository: NetworkRepository
 ) : Repository {
