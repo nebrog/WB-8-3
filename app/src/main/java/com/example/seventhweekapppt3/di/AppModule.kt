@@ -15,12 +15,14 @@ import io.ktor.client.engine.cio.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
     @Provides
+    @Singleton
     fun clientHttp(): HttpClient {
         return HttpClient(CIO) {
             install(ContentNegotiation) {
@@ -32,6 +34,7 @@ object AppModule {
     }
 
     @Provides
+    @Singleton
     fun roomProvide(
         @ApplicationContext
         applicationContext: Context
@@ -43,6 +46,7 @@ object AppModule {
     }
 
     @Provides
+    @Singleton
     fun provideRepository(repository: ComposeRepository):Repository{
         return repository
     }

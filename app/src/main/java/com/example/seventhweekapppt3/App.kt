@@ -1,4 +1,4 @@
-package com.example.seventhweekapppt3.ui
+package com.example.seventhweekapppt3
 
 import android.app.Application
 import com.facebook.drawee.backends.pipeline.Fresco
