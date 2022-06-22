@@ -1,4 +1,4 @@
-package com.example.seventhweekapppt3.ui
+package com.example.seventhweekapppt3.ui.favourites
 
 import android.net.Uri
 import android.view.LayoutInflater
